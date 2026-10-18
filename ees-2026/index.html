@@ -131,7 +131,7 @@ body{position:relative}
 .phase .v{font-size:var(--step--1);color:var(--muted);line-height:1.4}
 
 /* ---------- Slide 7 · Mission control ---------- */
-.mc{display:grid;gap:clamp(12px,2cqh,22px)}
+.mc{display:grid;gap:clamp(10px,1.6cqh,18px)}
 .mc-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(16px,4cqw,56px);align-items:end}
 .t-display{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,1.4rem + 2cqw,3.1rem);line-height:1.02;letter-spacing:-.03em;margin-top:12px}
 .t-display .muted{color:var(--dim)}
@@ -167,7 +167,7 @@ body{position:relative}
 
 /* diagram */
 .diagram{margin:0;display:flex;flex-direction:column}
-.diagram svg{display:block;width:100%;height:auto;max-height:38cqh;padding:8px 10px 4px}
+.diagram svg{display:block;width:100%;height:auto;max-height:31cqh;padding:8px 10px 4px}
 .node rect,.node polygon{fill:var(--surface-2);stroke:var(--line-strong);stroke-width:1.2;transition:stroke .2s,fill .2s}
 .node .t{fill:var(--fg);font-family:var(--font-sans);font-weight:600;font-size:15px}
 .node .s{fill:var(--dim);font-family:var(--font-mono);font-size:10.5px}
@@ -193,7 +193,7 @@ body{position:relative}
 .log{display:flex;flex-direction:column}
 .log-btn{appearance:none;border:1px solid var(--line-strong);background:transparent;color:var(--muted);font:inherit;font-size:var(--step--2);letter-spacing:.06em;padding:3px 10px;border-radius:999px;cursor:pointer;text-transform:uppercase}
 .log-btn:hover{color:var(--fg);border-color:var(--muted)}
-.log-body{flex:1 1 0;min-height:180px;overflow-y:auto;padding:10px 14px;font-family:var(--font-mono);font-size:11.5px;line-height:1.65;color:var(--muted);scrollbar-width:thin}
+.log-body{flex:1 1 0;min-height:140px;overflow-y:auto;padding:10px 14px;font-family:var(--font-mono);font-size:11.5px;line-height:1.65;color:var(--muted);scrollbar-width:thin}
 .log-line{white-space:pre-wrap;word-break:break-word;animation:in .25s ease}
 .log-line .ts{color:var(--dim)}
 .log-line.ok{color:var(--green)}
@@ -328,7 +328,7 @@ body{position:relative}
 .arch-side .lead{font-size:var(--step-0);max-width:50ch}
 .badge-stamp{display:inline-block;border:2px solid var(--red);color:var(--red-text);font-family:var(--font-mono);font-weight:700;letter-spacing:.14em;font-size:var(--step--2);padding:4px 10px;border-radius:5px;transform:rotate(-2deg)}
 .arch-fig{margin:0;overflow-x:auto}
-.arch-fig svg{display:block;width:100%;height:auto;max-height:46cqh;min-width:620px}
+.arch-fig svg{display:block;width:100%;height:auto;max-height:41cqh;min-width:620px}
 .an{outline:none}
 .an rect{fill:var(--surface-2);stroke:var(--line-strong);stroke-width:1.3;transition:stroke .2s,fill .2s}
 .an.user rect{fill:var(--surface)}
@@ -422,7 +422,7 @@ body{position:relative}
 .key.fk{border:1px solid var(--red);color:var(--red-text)}
 
 /* ---------- Slide 8 · Concentric layers ---------- */
-.secwrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);grid-template-areas:"head head" "rings layers";gap:clamp(16px,3cqh,28px) clamp(20px,4cqw,56px);align-items:center}
+.secwrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);grid-template-areas:"plain plain" "head head" "rings layers";gap:clamp(16px,3cqh,28px) clamp(20px,4cqw,56px);align-items:center}
 .sec-head{grid-area:head;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;column-gap:clamp(16px,4cqw,56px);align-items:end}
 .sec-head .eyebrow{grid-column:1}
 .sec-head .t-display{grid-column:1}
@@ -715,6 +715,78 @@ body{position:relative}
   .s-proof.is-active .kpi{animation:none}
 }
 
+/* ---------- Slide 5 · The swap ---------- */
+.tools{display:grid;gap:clamp(12px,2.2cqh,22px)}
+.tools-head{display:grid;gap:10px}
+.swap{list-style:none;margin:0;padding:0;display:grid;gap:clamp(4px,1cqh,10px)}
+.sw{display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1.15fr);align-items:baseline;padding:clamp(6px,1.2cqh,11px) 0;border-bottom:1px solid var(--line)}
+.sw:last-child{border-bottom:0}
+.sw-old,.sw-new{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 14px;min-width:0}
+.sw-old s{position:relative;text-decoration:none;font-family:var(--font-display);font-weight:800;font-size:clamp(1.4rem,1rem + 1.4cqw,1.95rem);letter-spacing:-.02em;color:var(--dim)}
+.sw-old s::after{content:"";position:absolute;left:-4px;right:-4px;top:54%;height:3px;border-radius:2px;background:var(--red);transform-origin:left center}
+.sw-old small{font-family:var(--font-mono);font-size:var(--step--2);color:var(--dim)}
+.sw-arr{justify-self:center;color:var(--red-text);font-size:var(--step-1)}
+.sw-new{font-family:var(--font-display);font-weight:800;font-size:clamp(1.4rem,1rem + 1.4cqw,1.95rem);letter-spacing:-.02em;color:var(--fg)}
+.sw-new small{font-family:var(--font-sans);font-weight:400;font-size:var(--step--1);letter-spacing:0;color:var(--muted)}
+.s-tools.is-active .sw-old{animation:swIn .45s ease both;animation-delay:calc(var(--i) * .7s + .2s)}
+.s-tools.is-active .sw-old s::after{animation:strike .4s ease both;animation-delay:calc(var(--i) * .7s + .55s)}
+.s-tools.is-active .sw-arr,.s-tools.is-active .sw-new{animation:swIn .45s ease both;animation-delay:calc(var(--i) * .7s + .8s)}
+@keyframes swIn{from{opacity:0;transform:translateY(6px)}}
+@keyframes strike{from{transform:scaleX(0)}}
+.tools-foot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,4cqw,56px);align-items:start;padding-top:clamp(10px,1.8cqh,16px);border-top:1px solid var(--line)}
+.why{font-size:var(--step-0);color:var(--muted);line-height:1.45}
+.why strong{color:var(--fg);font-weight:600}
+.tools-side{display:grid;gap:10px}
+.perks{display:flex;gap:8px;flex-wrap:wrap;margin:0;padding:0;list-style:none}
+.perks li{display:inline-flex;align-items:center;gap:8px;font-size:var(--step--1);color:var(--fg);border:1px solid var(--line-strong);border-radius:999px;padding:4px 12px}
+.perks li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green)}
+.tools-close{font-size:var(--step--1);color:var(--dim)}
+
+/* ---------- Slide 6 · The descent ---------- */
+.divwrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:clamp(24px,5cqw,80px);align-items:center}
+.div-text{display:grid;gap:clamp(14px,2.6cqh,24px)}
+.t-div{font-family:var(--font-display);font-weight:800;font-size:clamp(2.6rem,1.6rem + 3.6cqw,4.8rem);line-height:.98;letter-spacing:-.04em;max-width:12ch}
+.div-text .lead{font-size:var(--step-0);max-width:46ch}
+.reassure{font-family:var(--font-display);font-weight:800;font-size:clamp(1.5rem,1rem + 1.5cqw,2.1rem);line-height:1.2;letter-spacing:-.02em;color:var(--fg);max-width:none}
+.reassure mark{background:linear-gradient(transparent 62%,rgba(227,0,15,.55) 62%,rgba(227,0,15,.55) 92%,transparent 92%);color:inherit;padding:0 .08em}
+.s-div.is-active .reassure mark{background-size:100% 100%;background-repeat:no-repeat;animation:hl .8s ease .6s both}
+@keyframes hl{from{background-size:0% 100%}}
+.gauge{position:relative;border-radius:16px;padding:18px 22px 16px;background:linear-gradient(to bottom,rgba(255,255,255,.02) 0%,rgba(227,0,15,.05) 70%,rgba(227,0,15,.09) 100%);border:1px solid var(--line)}
+.g-surface{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:2px solid var(--line-strong)}
+.g-k{font-family:var(--font-mono);font-size:var(--step--2);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.g-shaft{position:relative;margin-left:14px;padding:14px 0 6px 28px;border-left:2px dashed var(--line-strong)}
+.g-diver{position:absolute;left:-7px;top:0;width:12px;height:12px;border-radius:50%;background:var(--red);box-shadow:0 0 14px var(--red-glow)}
+.g-dive{margin-bottom:10px}
+.g-levels{list-style:none;margin:0;padding:0;display:grid}
+.g-levels li{position:relative;display:grid;grid-template-columns:2.6rem minmax(0,1fr) auto;align-items:baseline;gap:10px;padding:clamp(6px,1.2cqh,11px) 0;border-bottom:1px solid var(--line)}
+.g-levels li:last-child{border-bottom:0}
+.g-levels li::before{content:"";position:absolute;left:-35px;top:50%;width:12px;height:2px;background:var(--line-strong)}
+.g-d{font-family:var(--font-mono);font-weight:700;font-size:var(--step--1);color:var(--red-text)}
+.g-t{font-size:var(--step-0);color:var(--fg)}
+.g-n{font-family:var(--font-mono);font-size:var(--step--2);color:var(--dim)}
+.g-floor{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line-strong);font-size:var(--step--2);color:var(--dim);letter-spacing:.04em}
+.cta{appearance:none;font:inherit;font-size:var(--step--1);font-weight:600;color:var(--fg);background:transparent;border:1px solid var(--line-strong);border-radius:999px;padding:8px 16px;cursor:pointer;transition:background .2s,border-color .2s}
+.cta:hover{border-color:var(--muted);background:var(--surface)}
+.cta.primary{background:var(--red);border-color:var(--red);color:#fff;font-size:var(--step-0);padding:10px 20px}
+.cta.primary:hover{background:#c4000d;border-color:#c4000d}
+.s-div.is-active .g-levels li{animation:swIn .4s ease both;animation-delay:calc(var(--i) * .18s + .3s)}
+.s-div.is-active .g-diver{animation:descend 2.6s cubic-bezier(.45,0,.2,1) .4s both}
+@keyframes descend{from{top:0}to{top:calc(100% - 12px)}}
+.g-diver{top:calc(100% - 12px)}
+
+.depth-chip{position:absolute;z-index:3;top:20px;right:max(24px,env(safe-area-inset-right,0px));display:inline-flex;align-items:center;gap:0;padding:0;border:1px solid var(--line-strong);border-radius:999px;background:rgba(23,23,23,.85);font:inherit;font-size:12px;color:var(--muted);cursor:pointer;overflow:hidden;transition:border-color .2s}
+.depth-chip span{padding:5px 12px}
+.dc-d{font-family:var(--font-mono);letter-spacing:.04em}
+.dc-d b{color:var(--red-text);font-weight:700}
+.dc-s{border-left:1px solid var(--line-strong);color:var(--fg);transition:background .2s}
+.depth-chip:hover{border-color:var(--muted)}
+.depth-chip:hover .dc-s{background:var(--surface-2)}
+/* ---------- Plain-English summary on technical slides ---------- */
+.plain{display:flex;align-items:baseline;gap:12px;padding:8px 14px;border-left:2px solid var(--red);background:var(--surface);border-radius:0 8px 8px 0;font-size:var(--step--1);color:var(--fg);max-width:100%}
+.secwrap .plain{grid-area:plain}
+.plain{grid-column:1 / -1;justify-self:start}
+.plain b{flex:none;font-family:var(--font-mono);font-size:var(--step--2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red-text)}
+
 /* ---------- Responsive ---------- */
 @media not all{
   .mc-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
@@ -733,7 +805,7 @@ body{position:relative}
 }
 @media (prefers-reduced-motion:reduce){
   .slide,.progress span{transition:none}
-  .edge.on path,.pill::before,.log-line,.map-ring,.ae path,.s-sec.is-active .ring{animation:none}
+  .edge.on path,.pill::before,.log-line,.map-ring,.ae path,.s-sec.is-active .ring,.s-tools.is-active .sw-old,.s-tools.is-active .sw-old s::after,.s-tools.is-active .sw-arr,.s-tools.is-active .sw-new,.s-div.is-active .g-levels li,.s-div.is-active .g-diver,.s-div.is-active .reassure mark{animation:none}
 }
 @media print{
   body{overflow:visible;height:auto}
@@ -773,7 +845,7 @@ body.zoomed .zoom-label{color:var(--fg)}
 <main class="deck" id="deck">
 
   <!-- ===================== Slide 1 · Title ===================== -->
-  <section class="slide s-title is-active" id="slide-1" data-num="1" aria-label="Slide 1 of 14: Title">
+  <section class="slide s-title is-active" id="slide-1" data-num="1" aria-label="Slide 1 of 16: Title">
     <canvas class="net" id="netCanvas" aria-hidden="true"></canvas>
     <div class="slide-inner title-wrap">
       <div class="title-main">
@@ -802,7 +874,7 @@ body.zoomed .zoom-label{color:var(--fg)}
 
 
   <!-- ===================== Slide 2 · Business imperative ===================== -->
-  <section class="slide s-imp" id="slide-2" data-num="2" aria-label="Slide 2 of 14: The business imperative">
+  <section class="slide s-imp" id="slide-2" data-num="2" aria-label="Slide 2 of 16: The business imperative">
     <div class="slide-inner">
       <div class="imp">
         <p class="eyebrow">The business imperative</p>
@@ -829,7 +901,7 @@ body.zoomed .zoom-label{color:var(--fg)}
   </section>
 
   <!-- ===================== Slide 3 · Plot twist ===================== -->
-  <section class="slide s-vs" id="slide-3" data-num="3" aria-label="Slide 3 of 14: The plot twist">
+  <section class="slide s-vs" id="slide-3" data-num="3" aria-label="Slide 3 of 16: The plot twist">
     <div class="slide-inner vs-wrap">
       <header>
         <p class="eyebrow">The plot twist</p>
@@ -866,7 +938,7 @@ body.zoomed .zoom-label{color:var(--fg)}
   </section>
 
   <!-- ===================== Slide 4 · The bet ===================== -->
-  <section class="slide s-sc" id="slide-4" data-num="4" aria-label="Slide 4 of 14: The bet">
+  <section class="slide s-sc" id="slide-4" data-num="4" aria-label="Slide 4 of 16: The bet">
     <div class="slide-inner sc-wrap">
       <header class="sc-head">
         <div>
@@ -899,9 +971,93 @@ body.zoomed .zoom-label{color:var(--fg)}
   </section>
 
 
+
+  <!-- ===================== Slide 5 · The toolbox (the swap) ===================== -->
+  <section class="slide s-tools" id="slide-5" data-num="5" aria-label="Slide 5 of 16: The toolbox">
+    <div class="slide-inner tools">
+      <header class="tools-head">
+        <p class="eyebrow">The toolbox</p>
+        <h2 class="t-display">Built with tools you probably used today.</h2>
+      </header>
+
+      <ol class="swap" aria-label="What a big data team would use, swapped for what I had">
+        <li class="sw" style="--i:0">
+          <span class="sw-old"><s>A data warehouse</s><small>BigQuery, Snowflake</small></span>
+          <span class="sw-arr" aria-hidden="true">→</span>
+          <span class="sw-new">Google Sheets<small>store and model the data</small></span>
+        </li>
+        <li class="sw" style="--i:1">
+          <span class="sw-old"><s>An orchestrator</s><small>Airflow</small></span>
+          <span class="sw-arr" aria-hidden="true">→</span>
+          <span class="sw-new">Apps Script triggers<small>already inside every Google Sheet</small></span>
+        </li>
+        <li class="sw" style="--i:2">
+          <span class="sw-old"><s>An email service</s><small>SendGrid</small></span>
+          <span class="sw-arr" aria-hidden="true">→</span>
+          <span class="sw-new">Gmail<small>send emails in bulk</small></span>
+        </li>
+        <li class="sw" style="--i:3">
+          <span class="sw-old"><s>A survey platform</s><small>Qualtrics</small></span>
+          <span class="sw-arr" aria-hidden="true">→</span>
+          <span class="sw-new">A web page<small>collect the answers</small></span>
+        </li>
+        <li class="sw" style="--i:4">
+          <span class="sw-old"><s>A BI tool</s><small>Looker, Tableau</small></span>
+          <span class="sw-arr" aria-hidden="true">→</span>
+          <span class="sw-new">A custom dashboard<small>show the results</small></span>
+        </li>
+      </ol>
+
+      <div class="tools-foot">
+        <p class="why">These were the tools the company gave me. <strong>No warehouse access, no servers, no budget.</strong> So the real question was: how far can they go?</p>
+        <div class="tools-side">
+          <ul class="perks" aria-label="Why everyday tools were the smart choice">
+            <li>No new vendor to approve</li>
+            <li>No new login for employees</li>
+            <li>No training for HR</li>
+          </ul>
+          <p class="tools-close">Same patterns as the bigger stack, so it can move there without a rewrite.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Slide 6 · Divider (the descent) ===================== -->
+  <section class="slide s-div" id="slide-6" data-num="6" aria-label="Slide 6 of 16: Here's where it gets technical">
+    <div class="slide-inner divwrap">
+      <div class="div-text">
+        <p class="eyebrow">Under the hood</p>
+        <h2 class="t-div">Here's where it gets technical.</h2>
+        <p class="lead">The next six slides show how the system works and the problems I had to solve. Each one opens with a plain-English summary.</p>
+        <p class="reassure">You can follow along<br><mark>even if code isn't your thing.</mark></p>
+      </div>
+      <div class="gauge">
+        <div class="g-surface">
+          <span class="g-k">Surface</span>
+          <button class="cta" id="skipBtn" type="button">Skip to the results</button>
+        </div>
+        <div class="g-shaft">
+          <span class="g-diver" aria-hidden="true"></span>
+          <button class="cta primary g-dive" id="diveBtn" type="button">Dive in <span aria-hidden="true">↓</span></button>
+          <ol class="g-levels" aria-label="The six technical slides">
+            <li style="--i:0"><span class="g-d">−1</span><span class="g-t">The architecture</span><span class="g-n">07</span></li>
+            <li style="--i:1"><span class="g-d">−2</span><span class="g-t">The data model</span><span class="g-n">08</span></li>
+            <li style="--i:2"><span class="g-d">−3</span><span class="g-t">The delivery engine</span><span class="g-n">09</span></li>
+            <li style="--i:3"><span class="g-d">−4</span><span class="g-t">Survey security</span><span class="g-n">10</span></li>
+            <li style="--i:4"><span class="g-d">−5</span><span class="g-t">Speed</span><span class="g-n">11</span></li>
+            <li style="--i:5"><span class="g-d">−6</span><span class="g-t">Privacy by design</span><span class="g-n">12</span></li>
+          </ol>
+        </div>
+        <p class="g-floor">Back to the surface on slide 13</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== Slide 5 · Architecture ===================== -->
-  <section class="slide s-arch" id="slide-5" data-num="5" aria-label="Slide 5 of 14: The architecture">
+  <section class="slide s-arch" id="slide-7" data-num="7" aria-label="Slide 7 of 16: The architecture">
+    <button class="depth-chip" type="button" aria-label="Depth 1 of 6. Back to the surface, skip to the results"><span class="dc-d">Depth <b>−1</b> of 6</span><span class="dc-s">Surface ↑</span></button>
     <div class="slide-inner arch">
+      <p class="plain"><b>In plain words</b><span>Everyday Google tools, wired together so survey links go out, answers come back, and leaders see the results.</span></p>
       <header class="arch-head">
         <div>
           <p class="eyebrow">The architecture</p>
@@ -966,8 +1122,10 @@ body.zoomed .zoom-label{color:var(--fg)}
   </section>
 
   <!-- ===================== Slide 6 · Data model ===================== -->
-  <section class="slide s-code" id="slide-6" data-num="6" aria-label="Slide 6 of 14: The data model">
+  <section class="slide s-code" id="slide-8" data-num="8" aria-label="Slide 8 of 16: The data model">
+    <button class="depth-chip" type="button" aria-label="Depth 2 of 6. Back to the surface, skip to the results"><span class="dc-d">Depth <b>−2</b> of 6</span><span class="dc-s">Surface ↑</span></button>
     <div class="slide-inner codewrap">
+      <p class="plain"><b>In plain words</b><span>One formula turns the raw HR list into the exact table the survey needs, and anyone can adjust it from a dropdown.</span></p>
       <header class="code-head">
         <div>
           <p class="eyebrow">The data model</p>
@@ -1018,8 +1176,10 @@ body.zoomed .zoom-label{color:var(--fg)}
   </section>
 
   <!-- ===================== Slide 7 · Blaster engine ===================== -->
-  <section class="slide s-blaster" id="slide-7" data-num="7" aria-label="Slide 7 of 14: The delivery engine">
+  <section class="slide s-blaster" id="slide-9" data-num="9" aria-label="Slide 9 of 16: The delivery engine">
+    <button class="depth-chip" type="button" aria-label="Depth 3 of 6. Back to the surface, skip to the results"><span class="dc-d">Depth <b>−3</b> of 6</span><span class="dc-s">Surface ↑</span></button>
     <div class="slide-inner mc">
+      <p class="plain"><b>In plain words</b><span>Gmail only allows so many emails a day, so the system sends in small batches and pauses itself until it can send again.</span></p>
       <header class="mc-head">
         <div>
           <p class="eyebrow">The delivery engine</p>
@@ -1094,8 +1254,10 @@ body.zoomed .zoom-label{color:var(--fg)}
   </section>
 
   <!-- ===================== Slide 8 · Form security ===================== -->
-  <section class="slide s-sec" id="slide-8" data-num="8" aria-label="Slide 8 of 14: The unbreakable form">
+  <section class="slide s-sec" id="slide-10" data-num="10" aria-label="Slide 10 of 16: The unbreakable form">
+    <button class="depth-chip" type="button" aria-label="Depth 4 of 6. Back to the surface, skip to the results"><span class="dc-d">Depth <b>−4</b> of 6</span><span class="dc-s">Surface ↑</span></button>
     <div class="slide-inner secwrap">
+      <p class="plain"><b>In plain words</b><span>Four layers make sure only the right person can answer, only once, and nothing harmful gets in.</span></p>
       <header class="sec-head">
         <p class="eyebrow">Survey security</p>
         <h2 class="t-display">The unbreakable form</h2>
@@ -1131,8 +1293,10 @@ body.zoomed .zoom-label{color:var(--fg)}
   </section>
 
   <!-- ===================== Slide 9 · Speed ===================== -->
-  <section class="slide s-race" id="slide-9" data-num="9" aria-label="Slide 9 of 14: Beating the clock">
+  <section class="slide s-race" id="slide-11" data-num="11" aria-label="Slide 11 of 16: Beating the clock">
+    <button class="depth-chip" type="button" aria-label="Depth 5 of 6. Back to the surface, skip to the results"><span class="dc-d">Depth <b>−5</b> of 6</span><span class="dc-s">Surface ↑</span></button>
     <div class="slide-inner racewrap">
+      <p class="plain"><b>In plain words</b><span>Matching thousands of answers to employees could hit a time limit, so I built an index that finds each one instantly.</span></p>
       <header class="race-head">
         <div>
           <p class="eyebrow">Speed</p>
@@ -1181,8 +1345,10 @@ body.zoomed .zoom-label{color:var(--fg)}
   </section>
 
   <!-- ===================== Slide 10 · Privacy ===================== -->
-  <section class="slide s-priv" id="slide-10" data-num="10" aria-label="Slide 10 of 14: Privacy by design">
+  <section class="slide s-priv" id="slide-12" data-num="12" aria-label="Slide 12 of 16: Privacy by design">
+    <button class="depth-chip" type="button" aria-label="Depth 6 of 6. Back to the surface, skip to the results"><span class="dc-d">Depth <b>−6</b> of 6</span><span class="dc-s">Surface ↑</span></button>
     <div class="slide-inner privwrap">
+      <p class="plain"><b>In plain words</b><span>Small groups stay hidden and some roles see masked data, so nobody can work out who said what.</span></p>
       <header class="priv-head">
         <div>
           <p class="eyebrow">Privacy by design</p>
@@ -1242,10 +1408,10 @@ body.zoomed .zoom-label{color:var(--fg)}
   </section>
 
   <!-- ===================== Slide 11 · Dashboard reveal ===================== -->
-  <section class="slide s-hero" id="slide-11" data-num="11" aria-label="Slide 11 of 14: The dashboard">
+  <section class="slide s-hero" id="slide-13" data-num="13" aria-label="Slide 13 of 16: The dashboard">
     <div class="slide-inner hero">
       <div class="hero-text">
-        <p class="eyebrow">Bringing it to life</p>
+        <p class="eyebrow">Back to the surface</p>
         <h2 class="t-display">The EES 2026 dashboard</h2>
         <p class="lead">All of the engineering ends here: one screen where leaders can read the results, filter them by their own part of the bank, and act.</p>
         <ul class="views" aria-label="Dashboard views">
@@ -1268,7 +1434,7 @@ body.zoomed .zoom-label{color:var(--fg)}
   </section>
 
   <!-- ===================== Slide 12 · Investigation ===================== -->
-  <section class="slide s-aha" id="slide-12" data-num="12" aria-label="Slide 12 of 14: The aha moment for management">
+  <section class="slide s-aha" id="slide-14" data-num="14" aria-label="Slide 14 of 16: The aha moment for management">
     <div class="slide-inner aha">
       <header class="aha-head">
         <div>
@@ -1300,7 +1466,7 @@ body.zoomed .zoom-label{color:var(--fg)}
   </section>
 
   <!-- ===================== Slide 13 · The proof ===================== -->
-  <section class="slide s-proof" id="slide-13" data-num="13" aria-label="Slide 13 of 14: The proof">
+  <section class="slide s-proof" id="slide-15" data-num="15" aria-label="Slide 15 of 16: The proof">
     <div class="slide-inner proof">
       <header class="proof-head">
         <div>
@@ -1342,7 +1508,7 @@ body.zoomed .zoom-label{color:var(--fg)}
   </section>
 
   <!-- ===================== Slide 14 · Connect ===================== -->
-  <section class="slide s-end" id="slide-14" data-num="14" aria-label="Slide 14 of 14: Thanks for reading">
+  <section class="slide s-end" id="slide-16" data-num="16" aria-label="Slide 16 of 16: Thanks for reading">
     <div class="slide-inner endwrap">
       <div class="end-main">
         <p class="eyebrow">Questions &amp; discussion</p>
@@ -1385,7 +1551,7 @@ body.zoomed .zoom-label{color:var(--fg)}
   </div>
   <div class="nav-ctrl">
     <button class="nav-btn" id="prevBtn" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-    <span class="counter" id="counter" aria-live="polite"><b>01</b> / 14</span>
+    <span class="counter" id="counter" aria-live="polite"><b>01</b> / 16</span>
     <button class="nav-btn" id="nextBtn" type="button" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
   </div>
   </div>
@@ -1393,7 +1559,7 @@ body.zoomed .zoom-label{color:var(--fg)}
 
 <script>
 (() => {
-  const TOTAL_SLIDES = 14;
+  const TOTAL_SLIDES = 16;
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const slides = [...document.querySelectorAll('.slide')];
   const counter = document.getElementById('counter');
@@ -1656,7 +1822,7 @@ body.zoomed .zoom-label{color:var(--fg)}
   })();
 
   /* ---------- Slide 7: blaster engine simulation (demo values) ---------- */
-  const s7 = document.getElementById('slide-7');
+  const s7 = document.getElementById('slide-9');
   const $ = id => document.getElementById(id);
   const el = { status: $('cpStatus'), queue: $('cpQueue'), sent: $('cpSent'), quota: $('cpQuota'), bar: $('cpBar'), clock: $('cpClock'), next: $('cpNext'), log: $('logBody') };
   const TOTAL = 3900, QUOTA = 1500, BATCH = 40, START_MIN = 8 * 60, WINDOW = 1440;
@@ -1760,7 +1926,7 @@ body.zoomed .zoom-label{color:var(--fg)}
 
   /* ---------- Slide 5: guided flow, steps 1 to 6 ---------- */
   (function archSlide() {
-    const s5 = document.getElementById('slide-5');
+    const s5 = document.getElementById('slide-7');
     const steps = [
       { n: ['auto'], e: ['e0'], t: 'Trigger fires.', d: 'Every 5 minutes a time trigger wakes the email engine, which hands Gmail the next batch.' },
       { n: ['gmail', 'emp'], e: ['e0', 'e1'], t: 'Link emailed.', d: 'Gmail delivers each employee a personal survey link. It only opens for the employee it belongs to.' },
@@ -1805,7 +1971,7 @@ body.zoomed .zoom-label{color:var(--fg)}
   })();
 
   /* ---------- Slide 6: column strips ---------- */
-  document.querySelectorAll('#slide-6 .cols').forEach(c => {
+  document.querySelectorAll('#slide-8 .cols').forEach(c => {
     const n = +c.dataset.n, few = c.classList.contains('few');
     for (let i = 0; i < n; i++) { const b = document.createElement('i'); if (few && i === 13) b.className = 'key'; c.append(b); }
   });
@@ -1825,7 +1991,7 @@ body.zoomed .zoom-label{color:var(--fg)}
 
   /* ---------- Slide 9: matching race, one step per tick on both sides ---------- */
   (function raceSlide() {
-    const s9 = document.getElementById('slide-9');
+    const s9 = document.getElementById('slide-11');
     const N = 40, TICK = 75;
     const targets = [27, 8, 33, 15, 38, 4, 22, 30, 12, 36, 19, 25];
     const mk = id => { const g = document.getElementById(id); const a = []; for (let i = 0; i < N; i++) { const c = document.createElement('i'); c.className = 'cell'; g.append(c); a.push(c); } return a; };
@@ -1886,7 +2052,7 @@ body.zoomed .zoom-label{color:var(--fg)}
   (function privSlide() {
     const person = '<svg viewBox="0 0 20 22"><circle cx="10" cy="6" r="4.5"/><path d="M1.5 21c0-5 3.8-8 8.5-8s8.5 3 8.5 8z"/></svg>';
     const people = document.getElementById('people'), chart = document.getElementById('miniChart');
-    const nBtns = [...document.querySelectorAll('#slide-10 [data-n]')];
+    const nBtns = [...document.querySelectorAll('#slide-12 [data-n]')];
     function setN(n) {
       nBtns.forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.n === n)));
       people.innerHTML = person.repeat(n);
@@ -1896,7 +2062,7 @@ body.zoomed .zoom-label{color:var(--fg)}
     nBtns.forEach(b => b.addEventListener('click', () => setN(+b.dataset.n)));
     setN(4);
 
-    const rBtns = [...document.querySelectorAll('#slide-10 [data-role]')];
+    const rBtns = [...document.querySelectorAll('#slide-12 [data-role]')];
     const sel = document.getElementById('fakeSelect'), fsV = document.getElementById('fsV');
     const fMask = document.getElementById('fMask'), payload = document.getElementById('payload');
     function line(k, v, masked) { return '  <span class="pk">"' + k + '"</span>: <span class="pv' + (masked ? ' masked' : '') + '">' + v + '</span>'; }
@@ -1919,7 +2085,7 @@ body.zoomed .zoom-label{color:var(--fg)}
 
   /* ---------- Slide 12: investigation stepper ---------- */
   (function ahaSlide() {
-    const s12 = document.getElementById('slide-12');
+    const s12 = document.getElementById('slide-14');
     const btns = [...s12.querySelectorAll('#invSteps button')];
     const imgs = [...s12.querySelectorAll('.inv-img')];
     const cap = document.getElementById('invCap');
@@ -1948,7 +2114,7 @@ body.zoomed .zoom-label{color:var(--fg)}
 
   /* ---------- Slide 13: count up the headline numbers ---------- */
   (function proofSlide() {
-    const s13 = document.getElementById('slide-13');
+    const s13 = document.getElementById('slide-15');
     const nums = [...s13.querySelectorAll('[data-count]')];
     let raf = 0;
     function run() {
@@ -1976,6 +2142,11 @@ body.zoomed .zoom-label{color:var(--fg)}
     });
     document.getElementById('restartBtn').addEventListener('click', () => go(0));
   })();
+
+  /* ---------- Slide 6: divider buttons ---------- */
+  document.getElementById('diveBtn').addEventListener('click', () => go(idx + 1));
+  document.getElementById('skipBtn').addEventListener('click', () => go(slides.findIndex(sl => sl.id === 'slide-13')));
+  document.querySelectorAll('.depth-chip').forEach(b => b.addEventListener('click', () => go(slides.findIndex(sl => sl.id === 'slide-13'))));
 
   /* ---------- Start: honor #slide-N links ---------- */
   slides.forEach((sl, k) => { if (k !== 0) sl.inert = true; });
