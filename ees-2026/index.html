@@ -703,7 +703,7 @@ body{position:relative}
 .end-main{grid-area:main;display:grid;gap:clamp(14px,2.6cqh,24px);justify-items:start;min-width:0}
 .t-end{font-family:var(--font-display);font-weight:800;font-size:var(--step-4);line-height:.98;letter-spacing:-.04em;max-width:11ch}
 .contacts{display:grid;gap:0;width:min(100%,560px);border-top:1px solid var(--line)}
-.contact{display:grid;grid-template-columns:5.5rem minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.contact{display:grid;grid-template-columns:5.5rem minmax(0,1fr) auto;gap:14px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
 .c-k{font-family:var(--font-mono);font-size:var(--step--2);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
 .c-v{font-size:var(--step-1);color:var(--fg);user-select:all;overflow-wrap:anywhere}
 .c-link{text-decoration:none;background:linear-gradient(var(--red),var(--red)) no-repeat 0 100%/0 2px;transition:background-size .3s;user-select:auto}
@@ -1170,6 +1170,7 @@ body{position:relative}
 .hcard.seen .hc-seen{opacity:1}
 .hc-open{position:absolute;top:11px;left:14px;font-size:var(--step--2);font-weight:600;color:var(--red-text);opacity:0;transition:opacity .2s}
 .hcard:hover .hc-open,.hcard:focus-visible .hc-open{opacity:1}
+.hcard:hover .hc-code,.hcard:focus-visible .hc-code{opacity:0}
 .hub-foot{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding-top:4px}
 .hub-prog{display:flex;align-items:center;gap:12px;font-size:var(--step--1);color:var(--muted)}
 .hp-bar{width:120px;height:4px;border-radius:2px;background:var(--line);overflow:hidden}
@@ -1188,6 +1189,16 @@ body{position:relative}
 .dive-close[hidden]{display:none}
 .dive-close svg{width:16px;height:16px}
 @media (prefers-reduced-motion:reduce){.s-hub.is-active .hcard,.slide.is-dive.pop{animation:none}}
+
+/* code links */
+.plain-row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.plain-row .plain{margin:0}
+.code-btn{flex:none;display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 8px;border:1.5px solid var(--line-strong);border-radius:999px;background:var(--surface);color:var(--fg);text-decoration:none;font-size:var(--step--1);font-weight:600;transition:border-color .2s,background .2s}
+.code-btn:hover,.code-btn:focus-visible{border-color:var(--green);background:#1d2a21}
+.code-btn .cb-ic{display:grid;place-items:center;min-width:34px;height:26px;padding:0 6px;border-radius:999px;background:#1d2a21;color:var(--green);font-family:var(--font-mono);font-size:13px;font-weight:700}
+.code-btn .cb-ar{color:var(--muted)}
+.code-note{margin-top:8px;font-size:var(--step--2);color:var(--dim)}
+.hc-code{position:absolute;top:10px;left:12px;padding:2px 8px;border-radius:999px;background:#1d2a21;color:var(--green);font-family:var(--font-mono);font-size:11px;font-weight:700}
 /* ---------- Plain-English summary on technical slides ---------- */
 .plain{display:flex;align-items:baseline;gap:12px;padding:8px 14px;border-left:2px solid var(--red);background:var(--surface);border-radius:0 8px 8px 0;font-size:var(--step--1);color:var(--fg);max-width:100%}
 .secwrap .plain{grid-area:plain}
@@ -1491,7 +1502,7 @@ body.zoomed .zoom-label{color:var(--fg)}
           <button class="hcard tall" type="button" data-go="slide-7"><span class="hc-ill" data-src="arch" aria-hidden="true"></span><span class="hc-txt"><span class="hc-k">The architecture</span><span class="hc-r">No hosting cost · data stays in Workspace</span></span><span class="hc-seen" aria-hidden="true">✓ Seen</span><span class="hc-open" aria-hidden="true">Open →</span></button>
         </div>
         <div class="hub-col"><p class="hub-ph"><b>Phase 1</b><span>Collect</span></p>
-          <button class="hcard" type="button" data-go="slide-8"><span class="hc-ill" data-src="engine" aria-hidden="true"></span><span class="hc-txt"><span class="hc-k">The delivery engine</span><span class="hc-r">~3,900 links under a 1,500/day cap</span></span><span class="hc-seen" aria-hidden="true">✓ Seen</span><span class="hc-open" aria-hidden="true">Open →</span></button>
+          <button class="hcard" type="button" data-go="slide-8"><span class="hc-ill" data-src="engine" aria-hidden="true"></span><span class="hc-txt"><span class="hc-k">The delivery engine</span><span class="hc-r">~3,900 links under a 1,500/day cap</span><span class="hc-code">&lt;/&gt; Code available</span></span><span class="hc-seen" aria-hidden="true">✓ Seen</span><span class="hc-open" aria-hidden="true">Open →</span></button>
           <button class="hcard" type="button" data-go="slide-9"><span class="hc-ill" data-src="gate" aria-hidden="true"></span><span class="hc-txt"><span class="hc-k">Survey security</span><span class="hc-r">4 layers around every answer</span></span><span class="hc-seen" aria-hidden="true">✓ Seen</span><span class="hc-open" aria-hidden="true">Open →</span></button>
         </div>
         <div class="hub-col"><p class="hub-ph"><b>Phase 2</b><span>Model</span></p>
@@ -1579,7 +1590,8 @@ body.zoomed .zoom-label{color:var(--fg)}
   <!-- ===================== Slide 8 · Delivery engine ===================== -->
   <section class="slide s-blaster dive" id="slide-8" data-num="8" aria-label="Deep dive 2 of 6: The delivery engine">
     <div class="slide-inner mc">
-      <p class="plain"><b>In plain words</b><span>Gmail only allows so many emails a day, so the system sends in small batches and pauses itself until it can send again.</span></p>
+      <div class="plain-row"><p class="plain"><b>In plain words</b><span>Gmail only allows so many emails a day, so the system sends in small batches and pauses itself until it can send again.</span></p>
+      <a class="code-btn" href="https://github.com/fauzanr-hub/ees-2026/tree/main/email-robot" target="_blank" rel="noopener" title="Clean version on GitHub: same logic, no company data"><span class="cb-ic">&lt;/&gt;</span>Code<span class="cb-ar" aria-hidden="true">↗</span></a></div>
       <header class="mc-head">
         <div>
           <p class="eyebrow">The delivery engine</p>
@@ -2019,6 +2031,11 @@ body.zoomed .zoom-label{color:var(--fg)}
           <div class="contact">
             <span class="c-k">LinkedIn</span>
             <a class="c-v c-link" href="https://www.linkedin.com/in/fauzanrachmansyah/" target="_blank" rel="noopener">linkedin.com/in/fauzanrachmansyah</a>
+            <span></span>
+          </div>
+          <div class="contact">
+            <span class="c-k">Code</span>
+            <a class="c-v c-link" href="https://github.com/fauzanr-hub/ees-2026" target="_blank" rel="noopener">github.com/fauzanr-hub/ees-2026</a>
             <span></span>
           </div>
         </div>
@@ -2821,6 +2838,4 @@ body.zoomed .zoom-label{color:var(--fg)}
   window.addEventListener('hashchange', () => { const k = slides.findIndex(sl => '#' + sl.id === location.hash); if (k >= 0 && k !== idx) go(k); });
 })();
 </script>
-
-</body>
-</html>
+</body></html>
