@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Antique-Antique: A Swing!">
 <meta property="og:description" content="Lagi pusing? Pecahkan saja. Game 60 detik untuk melepas stres: hantam barang antik asing sepuasnya. Dibuat oleh Fauzan Rahmansyah.">
-<meta property="og:image" content="https://fauzanr-hub.github.io/antique-antique/preview.png?v=1">
+<meta property="og:image" content="https://fauzanr-hub.github.io/antique-antique/preview.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="627">
 <meta property="og:url" content="https://fauzanr-hub.github.io/antique-antique/">
@@ -358,6 +358,24 @@ button{font:inherit;color:inherit}
   #intro .ticket{margin-top:0;padding:10px 14px 12px;gap:8px}
 }
 @media (prefers-reduced-motion:reduce){.curator svg,.clock svg,#vig,.gauge b,.rage .gauge,.rmult{animation:none!important}.stk{animation-duration:.5s}}
+
+/* The tricolor: one banner, three colors touching, flat paint with paper grain. It hangs behind the headings; the rest stays night. */
+:root{--tri:linear-gradient(90deg,#138A43 0 33.34%,#1E38C2 33.34% 66.67%,#D2201A 66.67% 100%);--grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hangWrap{position:absolute;left:0;right:0;top:0;height:0;pointer-events:none;filter:drop-shadow(0 8px 14px rgba(0,0,0,.5));transform-origin:top center}
+.hang,.stagebox .flag{position:absolute;inset:0;background:var(--grain),var(--tri);background-blend-mode:overlay,normal;
+  clip-path:polygon(0 0,100% 0,100% 100%,83.33% calc(100% - 20px),66.67% 100%,50% calc(100% - 20px),33.34% 100%,16.67% calc(100% - 20px),0 100%)}
+#intro .hangWrap{transition:transform .75s cubic-bezier(.25,1.35,.4,1) .35s}
+#intro.dark .hangWrap{transform:translateY(-110%);transition:none}
+#intro:not(.dark) .logo .l1,#intro:not(.dark) .logo .l2,#intro:not(.dark) .logo .l2 span,#outro .hangText{color:#fff;text-shadow:0 3px 0 rgba(0,0,0,.25)}
+#intro .logo .l1,#intro .logo .l2,#intro .logo .l2 span{transition:color .4s .5s,text-shadow .4s .5s}
+#intro:not(.dark) .logo .tag{color:#fff}
+#intro:not(.dark) .logo .stripe{display:none}
+#outro .sum{text-shadow:0 2px 0 rgba(0,0,0,.25);margin-bottom:14px}
+#outro .hangWrap{animation:hangDrop .7s cubic-bezier(.25,1.35,.4,1) both}
+@keyframes hangDrop{from{transform:translateY(-110%)}}
+.stagebox .rb{display:none}
+.stagebox .flag{top:6px;filter:none}
+.stagebox::before{content:'';position:absolute;left:0;right:0;top:0;height:7px;border-radius:4px;background:linear-gradient(180deg,#F2CF7A,#B9852E);z-index:1}
 </style>
 
 <div id="app" data-state="intro">
@@ -447,6 +465,7 @@ button{font:inherit;color:inherit}
       <g class="bm bm2"><polygon points="187,520 203,520 250,0 140,0" fill="url(#bB)"/></g>
       <g class="bm bm3"><polygon points="287,520 303,520 490,0 380,0" fill="url(#bR)"/></g>
     </svg>
+    <div class="hangWrap" aria-hidden="true"><div class="hang"></div></div>
     <div class="col">
       <div class="topbar">
         <div class="seg" role="group" aria-label="Bahasa"><button type="button" data-lang="id" aria-pressed="true">ID</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
@@ -548,8 +567,9 @@ button{font:inherit;color:inherit}
   </section>
 
   <section id="outro" class="screen dimmed" hidden>
+    <div class="hangWrap" aria-hidden="true"><div class="hang"></div></div>
     <div class="col center">
-      <h2 class="neon" style="font-size:clamp(34px,10vw,48px)" data-i18n="timeup">WAKTU HABIS!</h2>
+      <h2 class="neon hangText" style="font-size:clamp(34px,10vw,48px)" data-i18n="timeup">WAKTU HABIS!</h2>
       <div class="sum">
         <span><svg width="24" height="24" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="12" fill="#F2C14E" stroke="#6B4210" stroke-width="2"/><circle cx="14" cy="14" r="7" fill="none" stroke="#8A5A12" stroke-width="2"/></svg><b id="oAmt"></b></span>
         <span><svg width="20" height="22" viewBox="0 0 24 24" fill="none" stroke="#F4F1E8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2h6M10 2v3C6 7 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-1-7-5-9V2"/><path d="M12 8l-2 3 3 2-2 3"/></svg><b id="oCnt"></b></span>
@@ -582,7 +602,7 @@ button{font:inherit;color:inherit}
         <h2 class="neon" style="font-size:clamp(20px,6vw,26px);text-align:left" data-i18n="report">LAPORAN KERUSAKAN</h2>
         <div class="seg" role="group" aria-label="Bahasa"><button type="button" data-lang="id" aria-pressed="true">ID</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
       </div>
-      <div class="stagebox">
+      <div class="stagebox"><div class="flag" aria-hidden="true"></div>
         <svg class="rb" viewBox="0 0 390 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <defs>
             <linearGradient id="clothR" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".3"/><stop offset=".45" stop-color="#fff" stop-opacity=".1"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient>
@@ -2549,7 +2569,7 @@ function timeUp(){
   slots.forEach(s=>s.hover=false);
 }
 function goOutro(){
-  setState('outro');
+  setState('outro');requestAnimationFrame(()=>trackHangs(200));
   $('#oAmt').textContent=compact(G.damage);$('#oCnt').textContent=G.count;
   G.sighed=false;dialTouched=false;buildDial();setDial(G.stressA,true);
   $('#resultBtn').focus({preventScroll:true});
@@ -2643,36 +2663,33 @@ function drawFace(g,i,x,y,size){
 /* The story card: 1080×1920 (9:16), drawn in 432×768 units. */
 let cardFile=null;
 function stamp(g,txt,x,y,rot,size){g.save();g.translate(x,y);g.rotate(rot);g.font=`700 ${size}px Silkscreen, monospace`;const w=g.measureText(txt).width+16,h=size+10;
-  g.strokeStyle='#FF5A4E';g.lineWidth=2.2;g.strokeRect(-w/2,-h/2,w,h);g.fillStyle='rgba(5,6,15,.55)';g.fillRect(-w/2+2,-h/2+2,w-4,h-4);g.fillStyle='#FF5A4E';g.textAlign='center';g.textBaseline='middle';g.fillText(txt,0,1);g.restore();}
+  g.strokeStyle='#FFFFFF';g.lineWidth=2.2;g.strokeRect(-w/2,-h/2,w,h);g.fillStyle='rgba(0,0,0,.2)';g.fillRect(-w/2+2,-h/2+2,w-4,h-4);g.fillStyle='#FFFFFF';g.textAlign='center';g.textBaseline='middle';g.fillText(txt,0,1);g.restore();}
 function drawCard(){
   return fontsReady.then(()=>{
     const UW=432,UH=768,c=mkCanvas(1080,1920),g=c.getContext('2d');
     g.scale(2.5,2.5);
-    const gr=g.createLinearGradient(0,0,0,UH);gr.addColorStop(0,'#05060F');gr.addColorStop(.55,'#0E1334');gr.addColorStop(1,'#07080F');
-    g.fillStyle=gr;g.fillRect(0,0,UW,UH);
-    [24,168,312].forEach((x,i)=>{
-      g.strokeStyle='#D9A944';g.lineWidth=3;g.lineCap='round';g.beginPath();g.moveTo(x-6,4);g.lineTo(x+102,4);g.stroke();
-      const p=new Path2D(`M${x} 6h96v470l-48-18-48 18z`);g.fillStyle=BANNER_COL[i];g.fill(p);
-      const cg=g.createLinearGradient(x,0,x+96,0);cg.addColorStop(0,'rgba(0,0,0,.3)');cg.addColorStop(.45,'rgba(255,255,255,.1)');cg.addColorStop(1,'rgba(0,0,0,.32)');g.fillStyle=cg;g.fill(p);
-    });
-    g.fillStyle='rgba(5,6,15,.58)';g.fillRect(0,0,UW,UH);
-    const rg=g.createRadialGradient(216,250,0,216,250,230);rg.addColorStop(0,'rgba(255,244,220,.3)');rg.addColorStop(1,'rgba(255,244,220,0)');g.fillStyle=rg;g.fillRect(0,0,UW,UH);
-    g.fillStyle='#FFE7A8';[[52,220,6],[384,170,5],[370,330,5],[60,420,4]].forEach(([x,y,r])=>{g.beginPath();g.moveTo(x,y-r);g.lineTo(x+r*.35,y-r*.35);g.lineTo(x+r,y);g.lineTo(x+r*.35,y+r*.35);g.lineTo(x,y+r);g.lineTo(x-r*.35,y+r*.35);g.lineTo(x-r,y);g.lineTo(x-r*.35,y-r*.35);g.closePath();g.fill();});
+    const gr=g.createLinearGradient(0,0,0,UH);gr.addColorStop(0,'#05060F');gr.addColorStop(.55,'#0E1334');gr.addColorStop(1,'#07080F');g.fillStyle=gr;g.fillRect(0,0,UW,UH);
+    g.fillStyle='rgba(255,231,168,.8)';for(let i=0;i<40;i++){g.fillRect((i*97)%UW,(i*53)%UH,1.2,1.2);}
+    const grain=(x0,y0,w,h)=>{for(let i=0;i<w*h/22;i++){g.fillStyle=Math.random()<.5?'rgba(255,255,255,.08)':'rgba(0,0,0,.09)';g.fillRect(x0+Math.random()*w,y0+Math.random()*h,.8,.8);}};
+    /* the poster, pasted on the night wall */
+    g.save();g.translate(216,168);g.rotate(-.028);g.shadowColor='rgba(0,0,0,.6)';g.shadowBlur=22;g.shadowOffsetY=10;g.fillStyle='#000';g.fillRect(-196,-140,392,290);g.shadowColor='transparent';
+    [PAL.green,PAL.blue,PAL.red].forEach((c,i)=>{g.fillStyle=c;g.fillRect(-196+i*130.67,-140,131.5,290);});grain(-196,-140,392,290);
+    g.fillStyle='rgba(244,236,214,.85)';g.save();g.translate(-150,-140);g.rotate(-.1);g.fillRect(-30,-9,60,18);g.restore();g.save();g.translate(150,-140);g.rotate(.09);g.fillRect(-30,-9,60,18);g.restore();g.restore();
     g.textAlign='center';g.textBaseline='alphabetic';
-    g.font='400 17px Bungee, Impact, sans-serif';glowText(g,'ANTIQUE-ANTIQUE:',216,62,'#F4F1E8','rgba(255,222,160,.8)',6);
-    g.font='400 36px Bungee, Impact, sans-serif';glowText(g,'A SWING!',216,100,'#FFD98A','rgba(255,214,140,.9)',8,'#6B4210');
-    [[186,PAL.green],[216,PAL.blue],[246,PAL.red]].forEach(([x,col])=>{g.fillStyle=col;g.fillRect(x-13,112,26,5);});
+    g.font='400 17px Bungee, Impact, sans-serif';glowText(g,'ANTIQUE-ANTIQUE:',216,62,'#FFFFFF','rgba(0,0,0,0)',0,'rgba(0,0,0,.22)');
+    g.font='400 36px Bungee, Impact, sans-serif';glowText(g,'A SWING!',216,100,'#FFFFFF','rgba(0,0,0,0)',0,'rgba(0,0,0,.25)');
+    
     g.fillStyle='#F4F1E8';try{g.letterSpacing='1.5px';}catch(e){}
     fitFont(g,L().card1,s=>`400 ${s}px Silkscreen, monospace`,14,380);g.fillText(L().card1,216,182);
     try{g.letterSpacing='0px';}catch(e){}
     const amt=compact(G.damage);
-    fitFont(g,amt,s=>`700 ${s}px Silkscreen, monospace`,64,390);glowText(g,amt,216,246,'#FFE7A8','rgba(255,200,90,.55)',14,'#6B4210');
+    fitFont(g,amt,s=>`700 ${s}px Silkscreen, monospace`,64,390);glowText(g,amt,216,246,'#FFFFFF','rgba(0,0,0,0)',0,'rgba(0,0,0,.28)');
     g.fillStyle='#F4F1E8';fitFont(g,L().card3,s=>`400 ${s}px Bungee, Impact, sans-serif`,26,384);g.fillText(L().card3,216,282);
     stamp(g,L().suspect,350,150,-.14,12);
     /* rank: medal + label */
     const rk=L().ranks[G.rank].toUpperCase();
     const ls=fitFont(g,rk,s=>`400 ${s}px Bungee, Impact, sans-serif`,20,250);const lw=g.measureText(rk).width+16;
-    const total=64+12+lw,mx=216-total/2,my=318;
+    const total=64+12+lw,mx=216-total/2,my=336;
     g.save();g.translate(mx,my);
     [['M20 46l-10 28 11-5 7 8 7-26z',PAL.green],['M44 46l10 28-11-5-7 8-7-26z',PAL.red],['M26 44h12l-2 14h-8z',PAL.blue]].forEach(([d,col])=>{const p=new Path2D(d);g.fillStyle=col;g.fill(p);g.strokeStyle='#D9A944';g.lineWidth=1.5;g.stroke(p);});
     g.beginPath();g.arc(32,28,24,0,Math.PI*2);g.fillStyle='#E2B04A';g.fill();g.strokeStyle='#6B4210';g.lineWidth=2;g.stroke();
@@ -2753,11 +2770,20 @@ function showIntro(){
   if(!introSeen){introEl.classList.add('dark');introEl.classList.remove('lit');curSet('asleep');}
   else{introEl.classList.remove('dark');introEl.classList.add('lit');curSet('asleep');lobby(true);}
 }
+
+/* Size each hanging banner so it ends just under its heading. */
+function sizeHangs(){
+  [['#intro','#intro .logo',30],['#outro','#outro .sum',28]].forEach(([sc,el,pad])=>{
+    const S=$(sc),E=$(el),W=S&&S.querySelector('.hangWrap');if(!S||!E||!W||S.hidden)return;
+    W.style.height=Math.round(E.getBoundingClientRect().bottom-S.getBoundingClientRect().top+S.scrollTop+pad)+'px';});
+}
+function trackHangs(ms){const t0=performance.now();const f=()=>{sizeHangs();if(performance.now()-t0<ms)requestAnimationFrame(f);};f();}
+window.addEventListener('resize',()=>trackHangs(300));
 function wakeMuseum(){
   introSeen=true;
   Audio.init();Audio.resume();
   shout();
-  introEl.classList.add('waking');introEl.classList.remove('dark');
+  introEl.classList.add('waking');introEl.classList.remove('dark');trackHangs(1500);
   setTimeout(()=>Audio.buzz(),120);
   [380,620,860].forEach((d,i)=>setTimeout(()=>Audio.clunk(i),d));
   setTimeout(()=>{curSet('');curJolt();fSay('!!',900);},520);
@@ -2815,7 +2841,7 @@ function enterMuseum(){
   setTimeout(()=>{startGame();$('.col',introEl).style.transformOrigin='';},960);
 }
 function applyLang(l){
-  lang=l;document.documentElement.lang=l;
+  lang=l;document.documentElement.lang=l;requestAnimationFrame(()=>trackHangs(200));
   $$('[data-i18n]').forEach(el=>{const v=STR[lang][el.dataset.i18n];if(typeof v==='string')el.textContent=v;});
   $$('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===l)));
   $$('.faces button').forEach(b=>b.setAttribute('aria-label',L().faces[+b.dataset.level-1]));
