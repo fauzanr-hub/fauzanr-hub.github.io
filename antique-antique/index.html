@@ -376,6 +376,11 @@ button{font:inherit;color:inherit}
 .stagebox .rb{display:none}
 .stagebox .flag{top:6px;filter:none}
 .stagebox::before{content:'';position:absolute;left:0;right:0;top:0;height:7px;border-radius:4px;background:linear-gradient(180deg,#F2CF7A,#B9852E);z-index:1}
+
+/* Results: play again + share, side by side, both with words so the share button reads as sharing. */
+.actions .cta{font-size:18px;height:58px;gap:8px;padding:0 10px}
+.cta.alt{background:#FFFFFF;box-shadow:0 6px 0 rgba(0,0,0,.45),0 0 22px rgba(255,255,255,.18)}
+.cta.alt svg{flex:none}
 </style>
 
 <div id="app" data-state="intro">
@@ -660,8 +665,7 @@ button{font:inherit;color:inherit}
       </svg>
       <div class="actions">
         <button type="button" class="cta" id="againBtn"><span data-i18n="again">MAIN LAGI</span></button>
-        <button type="button" class="sq" id="copyBtn" aria-label="Salin teks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></button>
-        <button type="button" class="sq" id="cardBtn" aria-label="Lihat kartu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 15l3-3 2 2 3-4"/><circle cx="9" cy="8" r="1.5"/></svg></button>
+        <button type="button" class="cta alt" id="cardBtn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg><span data-i18n="shareBtn">BAGIKAN</span></button>
       </div>
       <textarea id="copyFallback" readonly hidden aria-label="Teks untuk dibagikan"></textarea>
       <div class="foot"><span data-i18n="harm">Tenang, nggak ada barang antik beneran yang pecah.</span><span class="credit" data-i18n="credit">dibuat oleh Fauzan Rahmansyah</span></div>
@@ -2854,7 +2858,6 @@ function applyLang(l){
   $$('.soundBtn').forEach(b=>b.setAttribute('aria-label',L().sound));
   $$('.seg').forEach(s=>s.setAttribute('aria-label',L().lang));
   $('#pauseBtn').setAttribute('aria-label',L().pause);
-  $('#copyBtn').setAttribute('aria-label',L().copy);$('#cardBtn').setAttribute('aria-label',L().cardBtn);
   $('.weapons').setAttribute('aria-label',L().weapons);
   $$('.wcard').forEach(c=>{const w=WEAPONS.find(x=>x.key===c.dataset.w);c.setAttribute('aria-label',`${w.name[lang]}: ${L().perk[w.key]}`);c.title=`${w.name[lang]} · ${L().perk[w.key]}`;});
   wnameEl.textContent=weapon.name[lang].toUpperCase();
@@ -2895,7 +2898,6 @@ function copyShare(btn){
     else{btn.style.borderColor='#3CCB6E';setTimeout(()=>{btn.style.borderColor='';},1400);}
   },fallback);}catch(e){fallback();}
 }
-$('#copyBtn').addEventListener('click',e=>copyShare(e.currentTarget));
 $('#shareBtn').addEventListener('click',e=>shareCard(e.currentTarget));
 $('#cardCopy').addEventListener('click',e=>copyShare(e.currentTarget));
 const stageEl=$('#stage');
