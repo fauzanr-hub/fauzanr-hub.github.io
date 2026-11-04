@@ -531,7 +531,7 @@ button{font:inherit;color:inherit}
         <div class="faces" id="faces1" role="group" aria-label="Stres"></div>
       </div>
       <button type="button" class="cta" id="enterBtn"><svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="12" fill="#F2C14E" stroke="#0A0C18" stroke-width="2"/><circle cx="14" cy="14" r="7.5" fill="none" stroke="#8A5A12" stroke-width="2"/><path d="M14 9v10" stroke="#8A5A12" stroke-width="2" stroke-linecap="round"/></svg><span data-i18n="enter">MASUK MUSEUM</span></button>
-      <div class="foot"><span data-i18n="harm">Tidak ada barang antik sungguhan yang dirugikan.</span><span class="credit" data-i18n="credit">dibuat oleh Fauzan Rahmansyah</span></div>
+      <div class="foot"><span data-i18n="harm">Tenang, nggak ada barang antik beneran yang pecah.</span><span class="credit" data-i18n="credit">dibuat oleh Fauzan Rahmansyah</span></div>
     </div>
   </section>
 
@@ -644,7 +644,7 @@ button{font:inherit;color:inherit}
         <button type="button" class="sq" id="cardBtn" aria-label="Lihat kartu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 15l3-3 2 2 3-4"/><circle cx="9" cy="8" r="1.5"/></svg></button>
       </div>
       <textarea id="copyFallback" readonly hidden aria-label="Teks untuk dibagikan"></textarea>
-      <div class="foot"><span data-i18n="harm">Tidak ada barang antik sungguhan yang dirugikan.</span><span class="credit" data-i18n="credit">dibuat oleh Fauzan Rahmansyah</span></div>
+      <div class="foot"><span data-i18n="harm">Tenang, nggak ada barang antik beneran yang pecah.</span><span class="credit" data-i18n="credit">dibuat oleh Fauzan Rahmansyah</span></div>
     </div>
   </section>
 
@@ -695,6 +695,7 @@ window.AAFaces=(function(){
 const $=s=>document.querySelector(s);
 /* Anonymous counter: three totals only (link opened, round started, round finished). No ids, no cookies, nothing about the visitor. */
 const COUNTER_URL='https://script.google.com/macros/s/AKfycbzpmSwoSqpPVtU_3rXV_xtR_Qdyk88Jy0FX8LGjUkaDItb-PfsFpOrm_ocWPx6d5Fq2fg/exec';
+const GAME_URL='fauzanr-hub.github.io/antique-antique';
 function ping(ev){
   if(!COUNTER_URL)return;
   const u=COUNTER_URL+'?e='+ev;
@@ -730,8 +731,8 @@ const CREDIT='Fauzan Rahmansyah';
    ============================================================ */
 const STR={
   id:{
-    tagline:'LAGI PUSING? PECAHKAN SAJA.',hintTap:'KETUK JUDULNYA',vaseNo:'Jangan disentuh!',vaseYes:'Sudah kubilang…',ticketQ:'SEBERAPA GELAP HARIMU?',ticketQ2:'MASIH GELAP?',enter:'MASUK MUSEUM',
-    harm:'Tidak ada barang antik sungguhan yang dirugikan.',credit:'dibuat oleh '+CREDIT,
+    tagline:'LAGI PUSING? PECAHKAN SAJA.',hintTap:'KETUK JUDULNYA',vaseNo:'Eh, jangan dipegang!',vaseYes:'Sudah kubilang…',ticketQ:'SEBERAPA GELAP HARIMU?',ticketQ2:'MASIH GELAP?',enter:'MASUK MUSEUM',
+    harm:'Tenang, nggak ada barang antik beneran yang pecah.',credit:'dibuat oleh '+CREDIT,
     faces:['Terang','Mendung','Gelap','Gelap gulita','Mau meledak'],
     ready:'SIAP?',go:'MULAI!',timeup:'WAKTU HABIS!',
     pause:'JEDA',resume:'LANJUT',finish:'SELESAI',sound:'Suara',lang:'Bahasa',weapons:'Senjata',
@@ -740,24 +741,24 @@ const STR={
     plaque:'DILARANG MENYENTUH',
     mat:{glass:'Kaca',ceramic:'Keramik',wood:'Kayu',stone:'Marmer',metal:'Logam'},
     perk:{sandal:'cepat · bonus hinaan +50%',pan:'×2 ke logam',golf:'30% pukulan sempurna ×3',bat:'seimbang',hammer:'lambat · gempa ke sebelah'},
-    ranks:['Pengunjung','Tamu Ceroboh','Oknum Tak Dikenal','Perusak Profesional','Mimpi Buruk Kurator','Legenda Antik Asing','Pemusnah Peradaban'],
-    promo:r=>`Gelar baru: ${r}!`,
+    ranks:['Masih Sopan','Tamu Ceroboh','Oknum Tak Dikenal','Perusak Profesional','Bikin Kurator Pingsan','Asuransi Angkat Tangan','Museum Tutup Permanen'],
+    promo:r=>`Naik level: ${r}`,
     ph1:['KIRIMAN BARU','NILAI ×1,5'],ph2:['HARGA NAIK','NILAI ×2'],ph3:['CUCI GUDANG','NILAI ×3'],
     boss:['MAHAKARYA DATANG','12 DETIK!'],bossWin:['MAHAKARYA HANCUR!'],ramp:['NGAMUK!','SEKALI PUKUL · ×2'],
-    cur:{bossIn:'Jangan yang ini!!',bossOut:'Fiuh… selamat.',ramp:'TIDAAAK!',rare:'Itu barang langka!!',last:'Ini pasti kerjaan orang luar!',rampWhat:'NGAMUK penuh! 5 detik: sekali pukul langsung hancur, nilai ×2!',smoke:'Tenang, masih bisa ditangani.'},
+    cur:{bossIn:'Jangan yang ini!!',bossOut:'Fiuh… selamat.',ramp:'TIDAAAK!',rare:'Itu barang langka!!',last:'Ini pasti kerjaan orang luar!',rampWhat:'NGAMUK penuh. 5 detik, sekali pukul langsung pecah, nilai ×2.',smoke:'Tenang, masih bisa ditangani.'},
     gauge:'NGAMUK',gaugeNear:'DIKIT LAGI!',gaugeOn:n=>`NGAMUK! ${n}`,unit:'/mnt',ixPeak:p=>`PUNCAK ${p}/MENIT`,ixRamp:' · saat NGAMUK',ixAvg:a=>`rata-rata ${a}/mnt`,ixFull:'IHSG = Indeks Hantaman Sepanjang Game (barang pecah per menit)',
-    hint_touch:'Ketuk barang untuk mengayun!',hint_mouse:'Klik barang · A S D · 1–5 ganti senjata',
+    hint_touch:'Ketuk barangnya buat mengayun.',hint_mouse:'Klik barang · A S D · 1–5 ganti senjata',
     crit:'SEMPURNA!',insult:'DISANDAL!',clang:'TENG!',quake:'GEMPA!',crush:'GEPENG!',rarePop:'LANGKA!',
     hit:['PRANG!','PYAR!','KRAK!','BLARR!','PECAH!'],bonk:['TOK!','DUK!','KRETEK!'],slap:['PLAK!','PLOK!'],
     rare:'Langka',bossWon:'HANCUR',bossLost:'SELAMAT',bossNone:'—',
-    aCount:n=>`${n} barang hancur`,aClock:s=>`${s} detik lagi`,aRank:r=>`Gelar: ${r}`,aRamp:n=>`Ngamuk ${n} kali`,aStress:(a,b)=>`Stres dari ${a} ke ${b}`,aBoss:r=>`Mahakarya: ${r}`,
-    share:(m,r,a,b)=>`Saya baru saja menghancurkan ${m} antik-antik asing di Antique-Antique: A Swing! Gelar: ${r}.`+(a>b?` Stres turun dari level ${a} ke ${b}.`:'')+' #AntiqueAntique',
-    card1:'SAYA BARU SAJA MENGHANCURKAN',card3:'ANTIK-ANTIK ASING',suspect:'TERSANGKA: KAMU',oneMore:'SATU RONDE LAGI',dialHint:'GESER KE KIRI KALAU SUDAH LEBIH LEGA',relief:n=>`LEGA! TURUN ${n} LEVEL`,stillStuck:'MASIH KESAL? SATU RONDE LAGI.',shareBtn:'BAGIKAN',shareDone:'Gambar tersimpan, teks sudah disalin.',shareSaved:'Gambar tersimpan.',shareHold:'Teks sudah disalin. Tekan lama gambar untuk menyimpan.',shareHold2:'Tekan lama gambar untuk menyimpan.',stressDown:n=>`STRES TURUN ${n} LEVEL`,stressSame:'MASIH PERLU SATU RONDE LAGI',ixCard:p=>`IHSG · PUNCAK ${p}/MENIT`,smashedN:n=>`${n} BARANG PECAH`,cardRank:'GELAR',cardStress:'STRES',cardRamp:'NGAMUK',
+    aCount:n=>`${n} barang hancur`,aClock:s=>`${s} detik lagi`,aRank:r=>`Julukan: ${r}`,aRamp:n=>`Ngamuk ${n} kali`,aStress:(a,b)=>`Stres dari ${a} ke ${b}`,aBoss:r=>`Mahakarya: ${r}`,
+    share:(m,r,a,b)=>`Barusan aku pecahin antik-antik asing senilai ${m}. Julukanku: ${r}. `+(a-b>=2?`Stres turun ${a-b} level. Lega.`:a-b===1?`Stres dari "${STR.id.faces[a-1].toLowerCase()}" jadi "${STR.id.faces[b-1].toLowerCase()}", lumayan lah.`:'Stresnya masih di situ. Kayaknya butuh satu ronde lagi.')+` Giliran kamu: ${GAME_URL} #AntiqueAntique`,
+    card1:'BARUSAN AKU PECAHIN',card3:'ANTIK-ANTIK ASING',suspect:'TERSANGKA: KAMU',oneMore:'SATU RONDE LAGI',dialHint:'GESER KE KIRI KALAU SUDAH LEBIH LEGA',relief:n=>`LEGA. TURUN ${n} LEVEL.`,stillStuck:'MASIH KESEL? SATU RONDE LAGI.',shareBtn:'BAGIKAN',shareDone:'Gambar tersimpan, teks sudah disalin.',shareSaved:'Gambar tersimpan.',shareHold:'Teks sudah disalin. Tekan lama gambar untuk menyimpan.',shareHold2:'Tekan lama gambar untuk menyimpan.',stressDown:(n,a,b)=>n>=2?`LEGA. DARI "${a.toUpperCase()}" JADI "${b.toUpperCase()}".`:'LUMAYAN, TURUN SATU LEVEL.',stressSame:'MASIH KESEL. BUTUH SATU RONDE LAGI.',ixCard:p=>`IHSG · PUNCAK ${p}/MENIT`,smashedN:n=>`${n} BARANG PECAH`,cardRank:'JULUKANKU',cardStress:'STRES',cardRamp:'NGAMUK',
     money:['Rp','triliun','miliar','juta'],short:['T','M','jt'],locale:'id-ID',dec:','
   },
   en:{
-    tagline:'STRESSED? SMASH IT.',hintTap:'TAP THE TITLE',vaseNo:'Do not touch!',vaseYes:'I told you…',ticketQ:'HOW DARK IS YOUR DAY?',ticketQ2:'STILL DARK?',enter:'ENTER MUSEUM',
-    harm:'No real antiques were harmed.',credit:'made by '+CREDIT,
+    tagline:'STRESSED? SMASH IT.',hintTap:'TAP THE TITLE',vaseNo:'Hey, hands off!',vaseYes:'I told you…',ticketQ:'HOW DARK IS YOUR DAY?',ticketQ2:'STILL DARK?',enter:'ENTER MUSEUM',
+    harm:'Relax, no real antiques were broken.',credit:'made by '+CREDIT,
     faces:['Bright','Cloudy','Dark','Pitch dark','About to explode'],
     ready:'READY?',go:'GO!',timeup:'TIME’S UP!',
     pause:'PAUSED',resume:'RESUME',finish:'FINISH',sound:'Sound',lang:'Language',weapons:'Weapons',
@@ -766,19 +767,19 @@ const STR={
     plaque:'DO NOT TOUCH',
     mat:{glass:'Glass',ceramic:'Ceramic',wood:'Wood',stone:'Marble',metal:'Metal'},
     perk:{sandal:'fast · insult bonus +50%',pan:'×2 on metal',golf:'30% perfect shot ×3',bat:'balanced',hammer:'slow · quakes the neighbours'},
-    ranks:['Visitor','Clumsy Guest','Unidentified Rogue','Professional Wrecker','Curator’s Nightmare','Antique-Antique Legend','Civilisation Ender'],
-    promo:r=>`New rank: ${r}!`,
+    ranks:['Still Polite','Clumsy Guest','Unidentified Rogue','Professional Wrecker','Made the Curator Faint','Insurance Gave Up','Museum Closed for Good'],
+    promo:r=>`Level up: ${r}`,
     ph1:['NEW SHIPMENT','VALUES ×1.5'],ph2:['PRICES UP','VALUES ×2'],ph3:['CLEARANCE SALE','VALUES ×3'],
     boss:['MASTERPIECE INCOMING','12 SECONDS!'],bossWin:['MASTERPIECE SMASHED!'],ramp:['RAMPAGE!','ONE-HIT · ×2'],
-    cur:{bossIn:'Not this one!!',bossOut:'Phew… it’s safe.',ramp:'NOOOOO!',rare:'That one’s rare!!',last:'This must be outsiders’ doing!',rampWhat:'RAMPAGE full! 5 seconds: every hit breaks anything, ×2 value!',smoke:'Relax, it’s still under control.'},
+    cur:{bossIn:'Not this one!!',bossOut:'Phew… it’s safe.',ramp:'NOOOOO!',rare:'That one’s rare!!',last:'This must be outsiders’ doing!',rampWhat:'RAMPAGE full. 5 seconds, one hit breaks anything, ×2 value.',smoke:'Relax, it’s still under control.'},
     gauge:'RAMPAGE',gaugeNear:'ALMOST!',gaugeOn:n=>`RAMPAGE! ${n}`,unit:'/min',ixPeak:p=>`PEAK ${p}/MIN`,ixRamp:' · in RAMPAGE',ixAvg:a=>`avg ${a}/min`,ixFull:'IHSG = Indeks Hantaman Sepanjang Game (pieces smashed per minute)',
-    hint_touch:'Tap an item to swing!',hint_mouse:'Click items · A S D · 1–5 to switch',
+    hint_touch:'Tap an item to swing.',hint_mouse:'Click items · A S D · 1–5 to switch',
     crit:'PERFECT!',insult:'INSULTED!',clang:'CLANG!',quake:'QUAKE!',crush:'CRUSHED!',rarePop:'RARE!',
     hit:['CRASH!','SMASH!','KRAK!','SHATTER!','BOOM!'],bonk:['BONK!','TONK!','CRACK!'],slap:['THWAP!','SLAP!'],
     rare:'Rare',bossWon:'SMASHED',bossLost:'SURVIVED',bossNone:'—',
-    aCount:n=>`${n} items smashed`,aClock:s=>`${s} seconds left`,aRank:r=>`Rank: ${r}`,aRamp:n=>`${n} rampages`,aStress:(a,b)=>`Stress from ${a} to ${b}`,aBoss:r=>`Masterpiece: ${r}`,
-    share:(m,r,a,b)=>`I just smashed ${m} worth of foreign antiques in Antique-Antique: A Swing! Rank: ${r}.`+(a>b?` Stress down from level ${a} to ${b}.`:'')+' #AntiqueAntique',
-    card1:'I JUST SMASHED',card3:'IN FOREIGN ANTIQUES',suspect:'SUSPECT: YOU',oneMore:'ONE MORE ROUND',dialHint:'DRAG LEFT IF YOU FEEL LIGHTER',relief:n=>`RELIEF! DOWN ${n} LEVEL${n>1?'S':''}`,stillStuck:'STILL MAD? ONE MORE ROUND.',shareBtn:'SHARE',shareDone:'Image saved, text copied.',shareSaved:'Image saved.',shareHold:'Text copied. Long-press the image to save it.',shareHold2:'Long-press the image to save it.',stressDown:n=>`STRESS DOWN ${n} LEVEL${n>1?'S':''}`,stressSame:'NEEDS ONE MORE ROUND',ixCard:p=>`IHSG · PEAK ${p}/MIN`,smashedN:n=>`${n} PIECES SMASHED`,cardRank:'RANK',cardStress:'STRESS',cardRamp:'RAMPAGE',
+    aCount:n=>`${n} items smashed`,aClock:s=>`${s} seconds left`,aRank:r=>`Title: ${r}`,aRamp:n=>`${n} rampages`,aStress:(a,b)=>`Stress from ${a} to ${b}`,aBoss:r=>`Masterpiece: ${r}`,
+    share:(m,r,a,b)=>`Just smashed ${m} worth of foreign antiques. My title: ${r}. `+(a-b>=2?`Stress down ${a-b} levels. Relief.`:a-b===1?`Stress went from "${STR.en.faces[a-1].toLowerCase()}" to "${STR.en.faces[b-1].toLowerCase()}". Not bad.`:'Stress hasn’t moved. Probably needs one more round.')+` Your turn: ${GAME_URL} #AntiqueAntique`,
+    card1:'JUST SMASHED',card3:'IN FOREIGN ANTIQUES',suspect:'SUSPECT: YOU',oneMore:'ONE MORE ROUND',dialHint:'DRAG LEFT IF YOU FEEL LIGHTER',relief:n=>`RELIEF. DOWN ${n} LEVEL${n>1?'S':''}.`,stillStuck:'STILL MAD? ONE MORE ROUND.',shareBtn:'SHARE',shareDone:'Image saved, text copied.',shareSaved:'Image saved.',shareHold:'Text copied. Long-press the image to save it.',shareHold2:'Long-press the image to save it.',stressDown:(n,a,b)=>n>=2?`RELIEF. FROM "${a.toUpperCase()}" TO "${b.toUpperCase()}".`:'NOT BAD, DOWN ONE LEVEL.',stressSame:'STILL MAD. NEEDS ONE MORE ROUND.',ixCard:p=>`IHSG · PEAK ${p}/MIN`,smashedN:n=>`${n} PIECES SMASHED`,cardRank:'MY TITLE',cardStress:'STRESS',cardRamp:'RAMPAGE',
     money:['IDR','trillion','billion','million'],short:['T','B','M'],locale:'en-US',dec:'.'
   }
 };
@@ -2690,7 +2691,11 @@ function drawCard(){
     g.save();g.strokeStyle='#F4F1E8';g.lineWidth=3;g.lineCap='round';g.lineJoin='round';g.stroke(new Path2D('M196 462h40M226 452l10 10-10 10'));g.restore();
     drawFace(g,G.stressB-1,252,436,52);
     g.textAlign='center';g.fillStyle=drop>0?'#3CCB6E':'#FFB43F';
-    const sl=drop>0?t('stressDown',drop):L().stressSame;fitFont(g,sl,s=>`400 ${s}px Bungee, Impact, sans-serif`,18,350);g.fillText(sl,216,516);
+    const sl=drop>0?t('stressDown',drop,L().faces[G.stressA-1],L().faces[G.stressB-1]):L().stressSame;const mk=s=>`400 ${s}px Bungee, Impact, sans-serif`;
+    if(fitFont(g,sl,mk,18,350)<16&&sl.indexOf('. ')>0){/* too long for one line: the reaction on top, the faces' names under it */
+      const k=sl.indexOf('. ')+1,l1=sl.slice(0,k),l2=sl.slice(k+1);
+      fitFont(g,l1,mk,17,350);g.fillText(l1,216,507);fitFont(g,l2,mk,15,350);g.fillText(l2,216,525);
+    }else g.fillText(sl,216,516);
     /* IHSG: the round's smashing pace */
     box(28,546,376,106);
     g.textAlign='left';g.fillStyle='#FFE7A8';g.font='700 12px Silkscreen, monospace';g.fillText(t('ixCard',G.ixPeak),42,568);
@@ -2700,7 +2705,8 @@ function drawCard(){
     /* small facts */
     const facts=[t('smashedN',G.count),`${L().cardRamp} ${G.ramps}×`];
     facts.forEach((f,i)=>{const x=28+i*192;box(x,666,184,44);g.textAlign='center';g.fillStyle='#F4F1E8';fitFont(g,f,s=>`400 ${s}px Silkscreen, monospace`,13,168);g.fillText(f,x+92,693);});
-    g.font='500 10px Archivo, Arial, sans-serif';g.fillStyle='rgba(244,241,232,.6)';g.textAlign='left';g.fillText(L().harm,28,746);
+    g.font='600 10px Archivo, Arial, sans-serif';const crW=g.measureText('© 2026 '+CREDIT).width;
+    g.fillStyle='rgba(244,241,232,.6)';g.textAlign='left';fitFont(g,L().harm,s=>`500 ${s}px Archivo, Arial, sans-serif`,10,376-crW-14);g.fillText(L().harm,28,746);
     g.font='600 10px Archivo, Arial, sans-serif';g.textAlign='right';g.fillText('© 2026 '+CREDIT,404,746);
     const img=$('#cardImg');img.src=c.toDataURL('image/jpeg',.9);
     img.alt=t('share',fmtMoney(G.damage),L().ranks[G.rank],G.stressA,G.stressB);
