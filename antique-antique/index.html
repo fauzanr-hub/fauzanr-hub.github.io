@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Silkscreen:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap">
 <style>
-/* Layout: one full-bleed stage. A 3D night museum under three colored spotlights and three exhibition banners; an arcade HUD floats over it; night-sky screens open and close the visit. Deliberately single-theme (night). */
+/* Layout: one full-bleed stage. A 3D night museum under three colored spotlights and one tricolor banner; an arcade HUD floats over it; night-sky screens open and close the visit. Deliberately single-theme (night). */
 :root{
   --night:#05060F;
   --navy:#0E1334;
@@ -1032,17 +1032,24 @@ const BANNER_ART=[
   {off:287,paths:['M309 62h18M311 62v8q-13 8-13 22 0 16 20 18 20-2 20-18 0-14-13-22v-8','M303 88q15-7 30 0M306 99q12 5 24 0']}
 ];
 const BANNER_COL=[PAL.green,PAL.blue,PAL.red];
-function texBanner(i){
-  const s=256/62,c=mkCanvas(256,Math.round(150*s)),g=c.getContext('2d');
-  g.scale(s,s);
-  const shape=new Path2D('M0 0h62v150l-31-13-31 13z');
-  g.fillStyle=BANNER_COL[i];g.fill(shape);
-  const cg=g.createLinearGradient(0,0,62,0);cg.addColorStop(0,'rgba(0,0,0,.25)');cg.addColorStop(.45,'rgba(255,255,255,.12)');cg.addColorStop(1,'rgba(0,0,0,.28)');
-  g.fillStyle=cg;g.fill(shape);
-  g.strokeStyle='rgba(0,0,0,.12)';g.lineWidth=.6;[15,31,47].forEach(x=>{g.beginPath();g.moveTo(x,0);g.lineTo(x,138);g.stroke();});
-  g.save();g.translate(-BANNER_ART[i].off,-24);g.strokeStyle='#FFFFFF';g.lineWidth=2;g.lineCap='round';g.lineJoin='round';
-  BANNER_ART[i].paths.forEach(d=>g.stroke(new Path2D(d)));g.restore();
-  return toTex(c,false);
+/* One wide banner, three colors touching: each color hangs behind its own pedestal. Drawn in world units so the icons keep their shape. */
+const flagC=mkCanvas(1024,512);let flagTex=null,flagKey='';
+function drawFlag(Ww,Hw){
+  const key=Ww.toFixed(3)+'x'+Hw.toFixed(3);if(key===flagKey)return;flagKey=key;
+  const g=flagC.getContext('2d'),W=1024,H=512,sx=W/Ww,sy=H/Hw,cw=Ww/3;
+  g.setTransform(1,0,0,1,0,0);g.clearRect(0,0,W,H);
+  const nd=Math.min(Hw*.1,cw*.22)*sy;
+  g.save();g.clip(new Path2D(`M0 0H${W}V${H}L${W*5/6} ${H-nd}L${W*2/3} ${H}L${W/2} ${H-nd}L${W/3} ${H}L${W/6} ${H-nd}L0 ${H}Z`));
+  BANNER_COL.forEach((col,i)=>{g.fillStyle=col;g.fillRect(Math.floor(i*W/3),0,Math.ceil(W/3)+1,H);});
+  for(let i=0;i<14000;i++){g.fillStyle=Math.random()<.5?'rgba(255,255,255,.07)':'rgba(0,0,0,.08)';g.fillRect(Math.random()*W,Math.random()*H,1.3,1.3);}
+  const sh=g.createLinearGradient(0,0,0,H);sh.addColorStop(0,'rgba(0,0,0,.16)');sh.addColorStop(.25,'rgba(0,0,0,0)');sh.addColorStop(1,'rgba(0,0,0,.14)');g.fillStyle=sh;g.fillRect(0,0,W,H);
+  const k=Math.min(cw*.62,Hw/2.42)/62;
+  BANNER_ART.forEach((art,i)=>{
+    g.setTransform(sx*k,0,0,sy*k,sx*(i*cw+cw/2-(art.off+31)*k),-sy*24*k);
+    g.strokeStyle='#FFFFFF';g.lineWidth=2;g.lineCap='round';g.lineJoin='round';art.paths.forEach(d=>g.stroke(new Path2D(d)));
+  });
+  g.restore();g.setTransform(1,0,0,1,0,0);
+  if(flagTex)flagTex.needsUpdate=true;
 }
 function texBeam(){
   const c=mkCanvas(4,256),g=c.getContext('2d'),gr=g.createLinearGradient(0,0,0,256);
@@ -1259,14 +1266,14 @@ const wains=new THREE.Mesh(new THREE.PlaneGeometry(60,1.25),new THREE.MeshLamber
 wains.position.set(0,.625,WALL_Z+.004);wains.receiveShadow=true;scene.add(wains);
 const rail=new THREE.Mesh(new THREE.BoxGeometry(60,.035,.04),brassMat);rail.position.set(0,1.26,WALL_Z+.02);
 
-const banners=[0,1,2].map(i=>{
-  const tx=texBanner(i);
-  const m=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshLambertMaterial({map:tx,transparent:true,alphaTest:.5,emissive:0xffffff,emissiveMap:tx,emissiveIntensity:.22,side:DS}));
+drawFlag(3,1.2);flagTex=toTex(flagC,false);
+const flag=(()=>{
+  const m=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshLambertMaterial({map:flagTex,transparent:true,alphaTest:.5,emissive:0xffffff,emissiveMap:flagTex,emissiveIntensity:.22,side:DS}));
   m.receiveShadow=true;scene.add(m);
-  const rod=new THREE.Mesh(new THREE.CylinderGeometry(.012,.012,1,8),brassMat);rod.rotation.z=Math.PI/2;scene.add(rod);
-  const f1=new THREE.Mesh(new THREE.SphereGeometry(.022,10,8),brassMat),f2=new THREE.Mesh(new THREE.SphereGeometry(.022,10,8),brassMat);scene.add(f1);scene.add(f2);
+  const rod=new THREE.Mesh(new THREE.CylinderGeometry(.014,.014,1,8),brassMat);rod.rotation.z=Math.PI/2;scene.add(rod);
+  const f1=new THREE.Mesh(new THREE.SphereGeometry(.026,10,8),brassMat),f2=new THREE.Mesh(new THREE.SphereGeometry(.026,10,8),brassMat);scene.add(f1);scene.add(f2);
   return{m,rod,f1,f2};
-});
+})();
 const plaqueCanvas=mkCanvas(512,96),plaqueTex=toTex(plaqueCanvas,false);
 const plaque=new THREE.Mesh(new THREE.PlaneGeometry(1,96/512),new THREE.MeshBasicMaterial({map:plaqueTex}));
 function drawPlaque(){
@@ -1408,12 +1415,11 @@ function layout(){
   const yTop=wallYAt(1-2*frac)-.05;
   const bBottom=2.0,maxW=spacing*.62;
   const bh=clamp(yTop-bBottom,.55,maxW*2.42),bw=bh/2.42;
-  banners.forEach((b,i)=>{
-    const x=(i-1)*spacing,top=bBottom+bh;
-    b.m.scale.set(bw,bh,1);b.m.position.set(x,bBottom+bh/2,WALL_Z+.03);
-    b.rod.scale.set(1,bw*1.2,1);b.rod.position.set(x,top+.012,WALL_Z+.05);
-    b.f1.position.set(x-bw*.6,top+.012,WALL_Z+.05);b.f2.position.set(x+bw*.6,top+.012,WALL_Z+.05);
-  });
+  {const Ww=spacing*3,top=bBottom+bh;
+    drawFlag(Ww,bh);
+    flag.m.scale.set(Ww,bh,1);flag.m.position.set(0,bBottom+bh/2,WALL_Z+.03);
+    flag.rod.scale.set(1,Ww*1.02,1);flag.rod.position.set(0,top+.014,WALL_Z+.05);
+    flag.f1.position.set(-Ww*.51,top+.014,WALL_Z+.05);flag.f2.position.set(Ww*.51,top+.014,WALL_Z+.05);}
   const pw=Math.min(.64,spacing*.62);plaque.scale.set(pw,pw,1);plaque.position.set(0,bBottom-.1,WALL_Z+.02);
   secCam.position.set(spacing*1.32,bBottom+bh-.04,WALL_Z);
   buildRopes();
